@@ -868,7 +868,7 @@ const autocomplete = new Vue({
       },
       {
         a: 'TW',
-        d: 'Taiwan (Province of China)'
+        d: 'Taiwan'
       },
       {
         a: 'TJ',
