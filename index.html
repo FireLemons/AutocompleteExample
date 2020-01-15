@@ -12,7 +12,8 @@
   <body>
     <div id="app">
       <h1>Example With Country Codes</h1>
-      <abbreviation-autocomplete :data="abbreviations" :debounce-wait="512" :limit="10" :min-input-length="2"></abbreviation-autocomplete>
+      <p>The debounce delay is set to 1 second so it can be easily observed</p>
+      <abbreviation-autocomplete :data="abbreviations" :debounce-wait="1024" :limit="10" :min-input-length="2"></abbreviation-autocomplete>
     </div>
   </body>
 </html> 
