@@ -11,7 +11,8 @@
   <body>
     <div id="app">
       <h1>Example With Country Codes</h1>
-      <abbreviation-autocomplete :data="abbreviations" :limit="10" :min-input-length="2"></abbreviation-autocomplete>
+      <p>Open the console to view events</p>
+      <abbreviation-autocomplete :data="abbreviations" :limit="10" :min-input-length="2" @input-change="console.log('input changed')" @select="console.log('dropdown item selected')"></abbreviation-autocomplete>
     </div>
   </body>
 </html> 
