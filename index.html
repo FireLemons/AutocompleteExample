@@ -4,7 +4,7 @@
     <title>Example</title>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="abbreviationAutocomplete/abbreviation-autocomplete.css">
-    <script src="vue.js"></script>
+    <script src="vue.min.js"></script>
     <script src="lodash.min.js"></script>
     <script src="abbreviationAutocomplete/abbreviation-autocomplete.js" defer></script>
     <script src="index.js" defer></script>
@@ -13,7 +13,8 @@
     <div id="app">
       <h1>Example With Country Codes</h1>
       <p>The debounce delay is set to 1 second so it can be easily observed</p>
-      <abbreviation-autocomplete :data="abbreviations" :debounce-wait="1024" :limit="10" :min-input-length="2"></abbreviation-autocomplete>
+      <p>Open the console to view events</p>
+      <abbreviation-autocomplete :data="abbreviations" :debounce-wait="1024" :limit="10" :min-input-length="2" @input-change="console.log('input changed')" @select="console.log('dropdown item selected')"></abbreviation-autocomplete>
     </div>
   </body>
 </html> 
