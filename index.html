@@ -14,7 +14,11 @@
       <h1>Example With Country Codes</h1>
       <p>The debounce delay is set to 1 second so it can be easily observed</p>
       <p>Open the console to view events</p>
-      <abbreviation-autocomplete :data="abbreviations" :debounce-wait="1024" :limit="10" :min-input-length="2" @input-change="console.log('input changed')" @select="console.log('dropdown item selected')"></abbreviation-autocomplete>
+      <p><a href="index.js">Example JS</a> | View the page source to see the template</p>
+      <noscript>
+        <h1>Javascript is disabled</h1>
+      </noscript>
+      <abbreviation-autocomplete :data="abbreviations" :debounce-wait="1024" :limit="10" :min-input-length="2" v-bind:input.sync="input" @select="console.log($event)"></abbreviation-autocomplete>
     </div>
   </body>
 </html> 
