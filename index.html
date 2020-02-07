@@ -18,7 +18,7 @@
       <noscript>
         <h1>Javascript is disabled</h1>
       </noscript>
-      <abbreviation-autocomplete :data="abbreviations" :debounce-wait="1024" :limit="10" :min-input-length="2" v-bind:input.sync="input" @select="console.log($event)"></abbreviation-autocomplete>
+      <abbreviation-autocomplete :data="abbreviations" :debounce-wait="1024" :limit="10" :min-search-text-length="2" v-bind:search-text.sync="input" @select="console.log($event)"></abbreviation-autocomplete>
       <!-- :data="abbreviations" -->
       <!-- the autocomplete data contained in the main Vue instance's abbreviations -->
 
@@ -28,10 +28,10 @@
       <!-- :limit="10" -->
       <!-- Limit the autocomplete results to a maximum of 10 -->
 
-      <!-- :min-input-length="2" -->
+      <!-- :min-search-text-length="2" -->
       <!-- don't load autocomplete results unless there are at least 2 characters typed -->
 
-      <!-- v-bind:input.sync="input" -->
+      <!-- v-bind:search-text.sync="input" -->
       <!-- 2 way bind the input of the parent Vue instance with the input of autocomplete component-->
 
       <!-- @select="console.log('selected: ' + JSON.stringify($event))" -->
