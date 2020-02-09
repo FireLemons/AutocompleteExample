@@ -16,7 +16,7 @@
       <noscript>
         <h1>Javascript is disabled</h1>
       </noscript>
-      <abbreviation-autocomplete :data="abbreviations" :limit="10" :min-search-text-length="2" v-bind:search-text.sync="input" @select="console.log('selected: ' + JSON.stringify($event))"></abbreviation-autocomplete>
+      <abbreviation-autocomplete :data="abbreviations" :limit="10" :min-search-text-length="2" placeholder="Country Code" v-bind:search-text.sync="input" @select="console.log('selected: ' + JSON.stringify($event))"></abbreviation-autocomplete>
       <!-- :data="abbreviations" -->
       <!-- the autocomplete data contained in the main Vue instance's abbreviations -->
 
