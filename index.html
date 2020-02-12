@@ -18,19 +18,22 @@
       </noscript>
       <abbreviation-autocomplete :data="abbreviations" :limit="10" :min-search-text-length="2" placeholder="Country Code" v-bind:search-text.sync="input" @select="console.log('selected: ' + JSON.stringify($event))"></abbreviation-autocomplete>
       <!-- :data="abbreviations" -->
-      <!-- the autocomplete data contained in the main Vue instance's abbreviations -->
+      <!-- The autocomplete data contained in the main Vue instance's abbreviations -->
 
       <!-- :limit="10" -->
       <!-- Limit the autocomplete results to a maximum of 10 -->
 
       <!-- :min-input-length="2" -->
-      <!-- don't load autocomplete results unless there are at least 2 characters typed -->
+      <!-- Don't load autocomplete results unless there are at least 2 characters typed -->
+
+      <!-- placeholder="Country Code" -->
+      <!-- Set the placeholder of the search text input to "Country Codes" -->
 
       <!-- v-bind:input.sync="input" -->
-      <!-- 2 way bind the input of the parent Vue instance with the input of autocomplete component-->
+      <!-- Two way bind the input of the parent Vue instance with the input of autocomplete component-->
 
       <!-- @select="console.log('selected: ' + JSON.stringify($event))" -->
-      <!-- when the select event happens, print the value emitted by the event -->
+      <!-- When the select event happens, print the value emitted by the event -->
     </div>
   </body>
 </html> 
