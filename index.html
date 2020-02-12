@@ -18,9 +18,9 @@
       <noscript>
         <h1>Javascript is disabled</h1>
       </noscript>
-      <abbreviation-autocomplete :data="abbreviations" :debounce-wait="1024" :limit="10" :min-search-text-length="2" v-bind:search-text.sync="input" @select="console.log($event)"></abbreviation-autocomplete>
+      <abbreviation-autocomplete :data="abbreviations" :debounce-wait="1024" :limit="10" :min-search-text-length="2" placeholder="Country Codes" v-bind:search-text.sync="input" @select="console.log($event)"></abbreviation-autocomplete>
       <!-- :data="abbreviations" -->
-      <!-- the autocomplete data contained in the main Vue instance's abbreviations -->
+      <!-- The autocomplete data contained in the main Vue instance's abbreviations -->
 
       <!-- :debounce-wait="1024" -->
       <!-- Set the debounce wait to 1024ms -->
@@ -29,13 +29,16 @@
       <!-- Limit the autocomplete results to a maximum of 10 -->
 
       <!-- :min-search-text-length="2" -->
-      <!-- don't load autocomplete results unless there are at least 2 characters typed -->
+      <!-- Don't load autocomplete results unless there are at least 2 characters typed -->
+
+      <!-- placeholder="Country Codes" -->
+      <!-- Set the placeholder of the search text input to "Country Codes" -->
 
       <!-- v-bind:search-text.sync="input" -->
-      <!-- 2 way bind the input of the parent Vue instance with the input of autocomplete component-->
+      <!-- Two way bind the input of the parent Vue instance with the input of autocomplete component-->
 
       <!-- @select="console.log('selected: ' + JSON.stringify($event))" -->
-      <!-- when the select event happens, print the value emitted by the event -->
+      <!-- When the select event happens, print the value emitted by the event -->
 
     </div>
   </body>
