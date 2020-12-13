@@ -998,12 +998,14 @@ const autocomplete = new Vue({
         a: 'AX',
         d: 'Aland Islands'
       }
-    ],
-    input: ''
+    ]
   },
-  watch: {
-    input: function(){
-      console.log('input changed to ' + this.input)
+  methods: {
+    onSearchTextChanged(newSearchText) {
+      console.log('input changed to ' + newSearchText)
+    },
+    test() {
+      console.log(this.$refs.autocomplete.isOption())
     }
   }
 })
