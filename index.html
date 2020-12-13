@@ -4,7 +4,7 @@
     <title>Example</title>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="abbreviationAutocomplete/abbreviation-autocomplete.css">
-    <script src="vue.js"></script>
+    <script src="vue.min.js"></script>
     <script src="abbreviationAutocomplete/abbreviation-autocomplete.js" defer></script>
     <script src="index.js" defer></script>
   </head>
@@ -16,7 +16,7 @@
       <noscript>
         <h1>Javascript is disabled</h1>
       </noscript>
-      <abbreviation-autocomplete :data="abbreviations" :limit="10" :min-search-text-length="2" placeholder="Country Code" ref="autocomplete" @update:searchText="onSearchTextChanged($event)" @select="console.log('selected: ' + JSON.stringify($event))"></abbreviation-autocomplete>
+      <abbreviation-autocomplete :data="abbreviations" :limit="10" :min-search-text-length="2" placeholder="Country Code" ref="autocomplete" @update:search-text="onSearchTextChanged($event)" @select="console.log('selected: ' + JSON.stringify($event))"></abbreviation-autocomplete>
       <!-- :data="abbreviations" -->
       <!-- The autocomplete data contained in the main Vue instance's abbreviations -->
 
