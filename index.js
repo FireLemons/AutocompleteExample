@@ -1003,9 +1003,6 @@ const autocomplete = new Vue({
   methods: {
     onSearchTextChanged(newSearchText) {
       console.log('input changed to ' + newSearchText)
-    },
-    test() {
-      console.log(this.$refs.autocomplete.isOption())
     }
   }
 })
