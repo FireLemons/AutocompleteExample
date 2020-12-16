@@ -29,8 +29,9 @@
       <!-- placeholder="Country Code" -->
       <!-- Set the placeholder of the search text input to "Country Codes" -->
 
-      <!-- v-bind:input.sync="input" -->
-      <!-- Two way bind the input of the parent Vue instance with the input of autocomplete component-->
+      <!-- @update:search-text="onSearchTextChanged($event)" -->
+      <!-- When the search text is changed print the value of the new search text-->
+      <!-- Does not emit after a select event changes the text -->
 
       <!-- @select="console.log('selected: ' + JSON.stringify($event))" -->
       <!-- When the select event happens, print the value emitted by the event -->
