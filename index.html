@@ -18,7 +18,7 @@
       <noscript>
         <h1>Javascript is disabled</h1>
       </noscript>
-      <abbreviation-autocomplete :data="abbreviations" :debounce-wait="1024" :limit="10" :min-search-text-length="2" placeholder="Country Codes" v-bind:search-text.sync="input" @select="console.log($event)"></abbreviation-autocomplete>
+      <abbreviation-autocomplete :data="abbreviations" :debounce-wait="1024" :limit="10" :min-search-text-length="2" placeholder="Country Codes" @update:search-text="onSearchTextChanged($event)" @select="console.log($event)"></abbreviation-autocomplete>
       <!-- :data="abbreviations" -->
       <!-- The autocomplete data contained in the main Vue instance's abbreviations -->
 
@@ -34,8 +34,9 @@
       <!-- placeholder="Country Codes" -->
       <!-- Set the placeholder of the search text input to "Country Codes" -->
 
-      <!-- v-bind:search-text.sync="input" -->
-      <!-- Two way bind the input of the parent Vue instance with the input of autocomplete component-->
+      <!-- @update:search-text="onSearchTextChanged($event)" -->
+      <!-- When the search text is changed print the value of the new search text-->
+      <!-- Does not emit after a select event changes the text -->
 
       <!-- @select="console.log('selected: ' + JSON.stringify($event))" -->
       <!-- When the select event happens, print the value emitted by the event -->
