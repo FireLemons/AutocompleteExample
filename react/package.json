@@ -1,0 +1,27 @@
+{
+  "name": "abbreviation-autocomplete-react",
+  "version": "1.0.0",
+  "description": "An autocomplete for search terms with limited characters",
+  "main": "build.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "autocomplete"
+  ],
+  "author": "shenyang64@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-react": "^7.12.10",
+    "nodemon": "^2.0.7"
+  },
+  "nodemonConfig": {
+    "ext": "jsx",
+    "watch": [
+      "*.jsx"
+    ]
+  }
+}
