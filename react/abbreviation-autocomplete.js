@@ -3,16 +3,19 @@
 class AbbreviationAutocomplete extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      liked: false
-    };
+    this.state = {};
   }
 
   render() {
-    return /*#__PURE__*/React.createElement("h1", null, "Hello, ", this.props.name);
+    return /*#__PURE__*/React.createElement("div", {
+      className: "abbreviation-autocomplete"
+    });
   }
 
 }
 
-const domContainer = document.getElementById('app');
-ReactDOM.render(React.createElement(AbbreviationAutocomplete), domContainer);
+AbbreviationAutocomplete.defaultProps = {
+  limit: Infinity,
+  minSearchTextLength: 1,
+  searchText: ''
+};
