@@ -35,7 +35,10 @@ class AbbreviationAutocomplete extends React.Component {
   render() {
     return /*#__PURE__*/React.createElement("div", {
       className: "abbreviation-autocomplete"
-    });
+    }, /*#__PURE__*/React.createElement("input", {
+      type: "text",
+      placeHolder: this.props.placeholder
+    }));
   }
 
 }
