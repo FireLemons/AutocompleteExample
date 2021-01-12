@@ -8,8 +8,10 @@ function buildJs(scriptName) {
       '@babel/preset-react'
     ]
   }, function(err, result) {
+    console.log(err)
     if (err) {
-      throw err
+      console.error(err)
+      process.exit(1)
     }
 
     fs.writeFileSync(`${scriptName}.js`, result.code)
