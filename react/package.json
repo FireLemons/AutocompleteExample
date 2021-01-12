@@ -4,7 +4,7 @@
   "description": "An autocomplete for search terms with limited characters",
   "main": "build.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "autobuild": "nodemon build.js"
   },
   "keywords": [
     "react",
@@ -19,10 +19,7 @@
     "nodemon": "^2.0.7"
   },
   "nodemonConfig": {
-    "ext": "jsx",
-    "watch": [
-      "*.jsx"
-    ]
+    "ext": "jsx"
   },
   "dependencies": {}
 }
