@@ -3,14 +3,11 @@
 class AbbreviationAutocomplete extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
 
     if (!props.data) {
       throw new Error('Missing required prop data');
     } else if (!(props.data instanceof Array)) {
       throw new TypeError(`Prop data must be an array. Instead received ${typeof props.data}`);
-    } else {
-      this.state['data'] = props.data;
     }
 
     if (isNaN(props.limit)) {
@@ -30,6 +27,19 @@ class AbbreviationAutocomplete extends React.Component {
     if (typeof props.searchText !== 'string') {
       throw new TypeError(`Prop searchText must be a string. Instead received ${typeof props.searchText}`);
     }
+
+    this.state = {
+      data: props.data
+    };
+    this.onSearchTextChange = this.onSearchTextChange.bind(this);
+  }
+
+  onSearchTextChange(e) {
+    let searchText = e.target.value;
+
+    if (this.props.minSearchTextLength <= searchText.length) {
+      console.log(searchText);
+    }
   }
 
   render() {
@@ -37,8 +47,9 @@ class AbbreviationAutocomplete extends React.Component {
       className: "abbreviation-autocomplete"
     }, /*#__PURE__*/React.createElement("input", {
       type: "text",
-      placeHolder: this.props.placeholder
-    }));
+      placeholder: this.props.placeholder,
+      onChange: this.onSearchTextChange
+    }), /*#__PURE__*/React.createElement("ul", null));
   }
 
 }

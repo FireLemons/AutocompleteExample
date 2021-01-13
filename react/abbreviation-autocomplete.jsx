@@ -4,15 +4,10 @@ class AbbreviationAutocomplete extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-    };
-
     if (!props.data) {
       throw new Error('Missing required prop data')
     } else if (!(props.data instanceof Array)) {
       throw new TypeError(`Prop data must be an array. Instead received ${typeof props.data}`)
-    } else {
-      this.state['data'] = props.data
     }
 
     if (isNaN(props.limit)) {
@@ -32,10 +27,28 @@ class AbbreviationAutocomplete extends React.Component {
     if (typeof props.searchText !== 'string') {
       throw new TypeError(`Prop searchText must be a string. Instead received ${typeof props.searchText}`)
     }
+
+    this.state = {
+      data: props.data
+    };
+
+    this.onSearchTextChange = this.onSearchTextChange.bind(this);
+  }
+
+  onSearchTextChange (e) {
+    let searchText = e.target.value
+
+    if (this.props.minSearchTextLength <= searchText.length){
+      console.log(searchText)
+    }
   }
 
   render() {
-    return <div className="abbreviation-autocomplete"></div>
+    return <div className="abbreviation-autocomplete">
+      <input type="text" placeholder={this.props.placeholder} onChange={this.onSearchTextChange} />
+      <ul>
+      </ul>
+    </div>
   }
 }
 
