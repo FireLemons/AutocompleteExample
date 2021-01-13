@@ -29,7 +29,8 @@ class AbbreviationAutocomplete extends React.Component {
     }
 
     this.state = {
-      data: props.data
+      data: props.data,
+      searchList: props.data.slice(0, 6)
     };
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
   }
@@ -49,7 +50,9 @@ class AbbreviationAutocomplete extends React.Component {
       type: "text",
       placeholder: this.props.placeholder,
       onChange: this.onSearchTextChange
-    }), /*#__PURE__*/React.createElement("ul", null));
+    }), /*#__PURE__*/React.createElement("ul", null, this.state.searchList.map((searchItem, index) => /*#__PURE__*/React.createElement("li", {
+      key: index
+    }, /*#__PURE__*/React.createElement("span", null, searchItem.a), /*#__PURE__*/React.createElement("span", null, " (", searchItem.d, ") ")))));
   }
 
 }

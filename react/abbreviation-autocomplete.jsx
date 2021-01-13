@@ -29,7 +29,8 @@ class AbbreviationAutocomplete extends React.Component {
     }
 
     this.state = {
-      data: props.data
+      data: props.data,
+      searchList: props.data.slice(0, 6)
     };
 
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
@@ -47,6 +48,12 @@ class AbbreviationAutocomplete extends React.Component {
     return <div className="abbreviation-autocomplete">
       <input type="text" placeholder={this.props.placeholder} onChange={this.onSearchTextChange} />
       <ul>
+        {this.state.searchList.map((searchItem, index) => (
+          <li key={ index }>
+            <span>{ searchItem.a }</span>
+            <span> ({ searchItem.d }) </span>
+          </li>
+        ))}
       </ul>
     </div>
   }
