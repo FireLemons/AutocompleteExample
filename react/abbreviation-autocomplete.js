@@ -83,7 +83,7 @@ class AbbreviationAutocomplete extends React.Component {
 
     this.state = {
       data: props.data,
-      searchList: props.data.slice(0, 6)
+      searchList: []
     };
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
   }
