@@ -82,7 +82,8 @@ class AbbreviationAutocomplete extends React.Component {
 
     this.state = {
       data: props.data,
-      searchList: []
+      searchList: [],
+      searchText: this.props.searchText === undefined ? '' : this.props.searchText
     };
 
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
@@ -106,11 +107,13 @@ class AbbreviationAutocomplete extends React.Component {
       })
 
       this.setState({
-        searchList: relatedResults.length <= this.props.limit ? relatedResults : relatedResults.slice(0, this.props.limit)
+        searchList: relatedResults.length <= this.props.limit ? relatedResults : relatedResults.slice(0, this.props.limit),
+        searchText: searchText
       })
     } else {
       this.setState({
-        searchList: []
+        searchList: [],
+        searchText: searchText
       })
     }
   }
@@ -122,6 +125,7 @@ class AbbreviationAutocomplete extends React.Component {
         {this.state.searchList.map((searchItem, index) => (
           <li key={ index }>
             <span>{ searchItem.a }</span>
+            <span> ({ searchItem.d.substr(0, searchItem.substrIndex) }</span><span class="highlight">{ searchItem.d.substr( searchItem.substrIndex, this.state.searchText.length ) }</span><span>{ searchItem.d.substr(searchItem.substrIndex + this.state.searchText.length) })</span>
             <span> ({ searchItem.d }) </span>
           </li>
         ))}
