@@ -84,13 +84,14 @@ class AbbreviationAutocomplete extends React.Component {
     this.state = {
       data: props.data,
       searchList: [],
-      searchText: this.props.searchText === undefined ? '' : this.props.searchText
+      searchText: this.props.searchText === undefined ? '' : this.props.searchText,
+      selected: -1
     };
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
   }
 
   onSearchTextChange(e) {
-    let searchText = e.target.value;
+    const searchText = e.target.value;
 
     if (this.props.minSearchTextLength <= searchText.length) {
       const countingSortData = [];
@@ -123,10 +124,16 @@ class AbbreviationAutocomplete extends React.Component {
       placeholder: this.props.placeholder,
       onChange: this.onSearchTextChange
     }), /*#__PURE__*/React.createElement("ul", null, this.state.searchList.map((searchItem, index) => /*#__PURE__*/React.createElement("li", {
-      key: index
+      key: index,
+      className: this.state.selected === index ? 'selected' : null,
+      onMouseEnter: () => {
+        this.setState({
+          selected: index
+        });
+      }
     }, /*#__PURE__*/React.createElement("span", null, searchItem.a), /*#__PURE__*/React.createElement("span", null, " (", searchItem.d.substr(0, searchItem.substrIndex)), /*#__PURE__*/React.createElement("span", {
-      class: "highlight"
-    }, searchItem.d.substr(searchItem.substrIndex, this.state.searchText.length)), /*#__PURE__*/React.createElement("span", null, searchItem.d.substr(searchItem.substrIndex + this.state.searchText.length), ")"), /*#__PURE__*/React.createElement("span", null, " (", searchItem.d, ") ")))));
+      className: "highlight"
+    }, searchItem.d.substr(searchItem.substrIndex, this.state.searchText.length)), /*#__PURE__*/React.createElement("span", null, searchItem.d.substr(searchItem.substrIndex + this.state.searchText.length), ")")))));
   }
 
 }

@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 // Inserts an element into a sorted array containing a limited range of integers
 //  @param {array} arr The sorted array
@@ -53,8 +53,8 @@ function countingSortInsert (arr, arrReduced, elem, elemGroup) {
 }
 
 class AbbreviationAutocomplete extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
     if (!props.data) {
       throw new Error('Missing required prop data')
@@ -83,14 +83,15 @@ class AbbreviationAutocomplete extends React.Component {
     this.state = {
       data: props.data,
       searchList: [],
-      searchText: this.props.searchText === undefined ? '' : this.props.searchText
-    };
+      searchText: this.props.searchText === undefined ? '' : this.props.searchText,
+      selected: -1
+    }
 
-    this.onSearchTextChange = this.onSearchTextChange.bind(this);
+    this.onSearchTextChange = this.onSearchTextChange.bind(this)
   }
 
   onSearchTextChange (e) {
-    let searchText = e.target.value
+    const searchText = e.target.value
 
     if (this.props.minSearchTextLength <= searchText.length) {
       const countingSortData = []
@@ -118,15 +119,14 @@ class AbbreviationAutocomplete extends React.Component {
     }
   }
 
-  render() {
-    return <div className="abbreviation-autocomplete">
-      <input type="text" placeholder={this.props.placeholder} onChange={this.onSearchTextChange} />
+  render () {
+    return <div className='abbreviation-autocomplete'>
+      <input type='text' placeholder={this.props.placeholder} onChange={this.onSearchTextChange} />
       <ul>
         {this.state.searchList.map((searchItem, index) => (
-          <li key={ index }>
-            <span>{ searchItem.a }</span>
-            <span> ({ searchItem.d.substr(0, searchItem.substrIndex) }</span><span class="highlight">{ searchItem.d.substr( searchItem.substrIndex, this.state.searchText.length ) }</span><span>{ searchItem.d.substr(searchItem.substrIndex + this.state.searchText.length) })</span>
-            <span> ({ searchItem.d }) </span>
+          <li key={index} className={this.state.selected === index ? 'selected' : null} onMouseEnter={() => { this.setState({ selected: index }) }}>
+            <span>{searchItem.a}</span>
+            <span> ({searchItem.d.substr(0, searchItem.substrIndex)}</span><span className='highlight'>{searchItem.d.substr(searchItem.substrIndex, this.state.searchText.length)}</span><span>{searchItem.d.substr(searchItem.substrIndex + this.state.searchText.length)})</span>
           </li>
         ))}
       </ul>
