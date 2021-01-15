@@ -88,6 +88,28 @@ class AbbreviationAutocomplete extends React.Component {
       selected: -1
     };
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
+    this.onInputKeyPress = this.onInputKeyPress.bind(this);
+  }
+
+  onInputKeyPress(e) {
+    const state = this.state;
+
+    switch (e.key) {
+      case 'ArrowDown':
+        // down (Set highlighted option 1 down)
+        this.setState({
+          selected: (state.selected + 1) % state.searchList.length
+        });
+        break;
+
+      case 'ArrowUp':
+        // up (Set highlighted option 1 up)
+        const searchLength = state.searchList.length;
+        this.setState({
+          selected: state.selected === -1 ? searchLength - 1 : (state.selected + searchLength - 1) % searchLength
+        });
+        break;
+    }
   }
 
   onSearchTextChange(e) {
@@ -122,7 +144,8 @@ class AbbreviationAutocomplete extends React.Component {
     }, /*#__PURE__*/React.createElement("input", {
       type: "text",
       placeholder: this.props.placeholder,
-      onChange: this.onSearchTextChange
+      onChange: this.onSearchTextChange,
+      onKeyDown: this.onInputKeyPress
     }), /*#__PURE__*/React.createElement("ul", null, this.state.searchList.map((searchItem, index) => /*#__PURE__*/React.createElement("li", {
       key: index,
       className: this.state.selected === index ? 'selected' : null,
