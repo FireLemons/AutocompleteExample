@@ -111,6 +111,10 @@ class AbbreviationAutocomplete extends React.Component {
         })
 
         break
+      case 'Enter':
+        this.select()
+
+        break
     }
   }
 
@@ -178,7 +182,7 @@ class AbbreviationAutocomplete extends React.Component {
             <span>{searchItem.d.substr(searchItem.substrIndex + this.state.searchText.length)})</span>
           </li>
         ))}
-        <li>{this.state.showSearchItems ? 'shown' : 'hidden'}</li>
+        <li>{this.state.showSearchItems && this.state.searchList.length ? 'shown' : 'hidden'}</li>
       </ul>
     </div>
   }

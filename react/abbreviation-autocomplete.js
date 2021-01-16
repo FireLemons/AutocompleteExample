@@ -111,6 +111,10 @@ class AbbreviationAutocomplete extends React.Component {
           selected: state.selected === -1 ? searchLength - 1 : (state.selected + searchLength - 1) % searchLength
         });
         break;
+
+      case 'Enter':
+        this.select();
+        break;
     }
   }
 
@@ -187,7 +191,7 @@ class AbbreviationAutocomplete extends React.Component {
       }
     }, /*#__PURE__*/React.createElement("span", null, searchItem.a), /*#__PURE__*/React.createElement("span", null, " (", searchItem.d.substr(0, searchItem.substrIndex)), /*#__PURE__*/React.createElement("span", {
       className: "highlight"
-    }, searchItem.d.substr(searchItem.substrIndex, this.state.searchText.length)), /*#__PURE__*/React.createElement("span", null, searchItem.d.substr(searchItem.substrIndex + this.state.searchText.length), ")"))), /*#__PURE__*/React.createElement("li", null, this.state.showSearchItems ? 'shown' : 'hidden')));
+    }, searchItem.d.substr(searchItem.substrIndex, this.state.searchText.length)), /*#__PURE__*/React.createElement("span", null, searchItem.d.substr(searchItem.substrIndex + this.state.searchText.length), ")"))), /*#__PURE__*/React.createElement("li", null, this.state.showSearchItems && this.state.searchList.length ? 'shown' : 'hidden')));
   }
 
 }
