@@ -83,14 +83,32 @@ class AbbreviationAutocomplete extends React.Component {
 
     this.state = {
       data: props.data,
+      recentlySelected: false,
       showSearchItems: false,
       searchList: [],
       searchText: this.props.searchText === undefined ? '' : this.props.searchText,
       selected: -1
     };
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
+    this.onInputFocus = this.onInputFocus.bind(this);
     this.onInputKeyPress = this.onInputKeyPress.bind(this);
     this.select = this.select.bind(this);
+  }
+
+  onInputFocus() {
+    const state = this.state;
+
+    if (state.recentlySelected) {
+      this.onSearchTextChange({
+        target: {
+          value: state.searchText
+        }
+      });
+    }
+
+    this.setState({
+      showSearchItems: true
+    });
   }
 
   onInputKeyPress(e) {
@@ -133,11 +151,13 @@ class AbbreviationAutocomplete extends React.Component {
         }
       });
       this.setState({
+        recentlySelected: false,
         searchList: relatedResults.length <= this.props.limit ? relatedResults : relatedResults.slice(0, this.props.limit),
         searchText: searchText
       });
     } else {
       this.setState({
+        recentlySelected: false,
         searchList: [],
         searchText: searchText
       });
@@ -146,18 +166,18 @@ class AbbreviationAutocomplete extends React.Component {
 
   select() {
     const state = this.state;
-    let selected;
+    let selectedData;
 
     if (state.selected !== -1) {
-      console.log('looping?'); //this.focused = false
-      //delete this.searchList[this.selected]['substrIndex']
-
-      selected = JSON.parse(JSON.stringify(state.searchList[state.selected]));
+      selectedData = JSON.parse(JSON.stringify(state.searchList[state.selected]));
       this.setState({
-        searchText: state.searchList[state.selected].a
-      }); //state.recentlySelected = true
+        recentlySelected: true,
+        searchText: state.searchList[state.selected].a,
+        selected: -1,
+        showSearchItems: false
+      }); //delete this.searchList[this.selected]['substrIndex']
 
-      return selected;
+      return selectedData;
     }
   }
 
@@ -174,11 +194,7 @@ class AbbreviationAutocomplete extends React.Component {
         });
       },
       onChange: this.onSearchTextChange,
-      onFocus: () => {
-        this.setState({
-          showSearchItems: true
-        });
-      },
+      onFocus: this.onInputFocus,
       onKeyDown: this.onInputKeyPress
     }), /*#__PURE__*/React.createElement("ul", null, this.state.searchList.map((searchItem, index) => /*#__PURE__*/React.createElement("li", {
       key: index,
