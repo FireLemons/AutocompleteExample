@@ -125,6 +125,7 @@ class AbbreviationAutocomplete extends React.Component {
         break
       case 'Enter':
         this.select()
+        e.target.blur();
 
         break
     }
