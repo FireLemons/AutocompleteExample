@@ -83,12 +83,14 @@ class AbbreviationAutocomplete extends React.Component {
 
     this.state = {
       data: props.data,
+      showSearchItems: false,
       searchList: [],
       searchText: this.props.searchText === undefined ? '' : this.props.searchText,
       selected: -1
     };
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onInputKeyPress = this.onInputKeyPress.bind(this);
+    this.select = this.select.bind(this);
   }
 
   onInputKeyPress(e) {
@@ -138,17 +140,46 @@ class AbbreviationAutocomplete extends React.Component {
     }
   }
 
+  select() {
+    const state = this.state;
+    let selected;
+
+    if (state.selected !== -1) {
+      console.log('looping?'); //this.focused = false
+      //delete this.searchList[this.selected]['substrIndex']
+
+      selected = JSON.parse(JSON.stringify(state.searchList[state.selected]));
+      this.setState({
+        searchText: state.searchList[state.selected].a
+      }); //state.recentlySelected = true
+
+      return selected;
+    }
+  }
+
   render() {
     return /*#__PURE__*/React.createElement("div", {
       className: "abbreviation-autocomplete"
     }, /*#__PURE__*/React.createElement("input", {
       type: "text",
       placeholder: this.props.placeholder,
+      value: this.state.searchText,
+      onBlur: () => {
+        this.setState({
+          showSearchItems: false
+        });
+      },
       onChange: this.onSearchTextChange,
+      onFocus: () => {
+        this.setState({
+          showSearchItems: true
+        });
+      },
       onKeyDown: this.onInputKeyPress
     }), /*#__PURE__*/React.createElement("ul", null, this.state.searchList.map((searchItem, index) => /*#__PURE__*/React.createElement("li", {
       key: index,
       className: this.state.selected === index ? 'selected' : null,
+      onClick: this.select,
       onMouseEnter: () => {
         this.setState({
           selected: index
@@ -156,7 +187,7 @@ class AbbreviationAutocomplete extends React.Component {
       }
     }, /*#__PURE__*/React.createElement("span", null, searchItem.a), /*#__PURE__*/React.createElement("span", null, " (", searchItem.d.substr(0, searchItem.substrIndex)), /*#__PURE__*/React.createElement("span", {
       className: "highlight"
-    }, searchItem.d.substr(searchItem.substrIndex, this.state.searchText.length)), /*#__PURE__*/React.createElement("span", null, searchItem.d.substr(searchItem.substrIndex + this.state.searchText.length), ")")))));
+    }, searchItem.d.substr(searchItem.substrIndex, this.state.searchText.length)), /*#__PURE__*/React.createElement("span", null, searchItem.d.substr(searchItem.substrIndex + this.state.searchText.length), ")"))), /*#__PURE__*/React.createElement("li", null, this.state.showSearchItems ? 'shown' : 'hidden')));
   }
 
 }

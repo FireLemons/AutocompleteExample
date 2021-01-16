@@ -82,6 +82,7 @@ class AbbreviationAutocomplete extends React.Component {
 
     this.state = {
       data: props.data,
+      showSearchItems: false,
       searchList: [],
       searchText: this.props.searchText === undefined ? '' : this.props.searchText,
       selected: -1
@@ -89,6 +90,7 @@ class AbbreviationAutocomplete extends React.Component {
 
     this.onSearchTextChange = this.onSearchTextChange.bind(this)
     this.onInputKeyPress = this.onInputKeyPress.bind(this)
+    this.select = this.select.bind(this)
   }
 
   onInputKeyPress (e) {
@@ -141,16 +143,42 @@ class AbbreviationAutocomplete extends React.Component {
     }
   }
 
+  select () {
+    const state = this.state
+    let selected
+
+    if (state.selected !== -1) {
+      console.log('looping?')
+      //this.focused = false
+      //delete this.searchList[this.selected]['substrIndex']
+      selected = JSON.parse(JSON.stringify(state.searchList[state.selected]))
+      this.setState({ searchText: state.searchList[state.selected].a })
+      //state.recentlySelected = true
+
+      return selected
+    }
+  }
+
   render () {
     return <div className='abbreviation-autocomplete'>
-      <input type='text' placeholder={this.props.placeholder} onChange={this.onSearchTextChange} onKeyDown={this.onInputKeyPress} />
+      <input
+        type='text'
+        placeholder={this.props.placeholder}
+        value={this.state.searchText}
+        onBlur={() => {this.setState({ showSearchItems: false })}}
+        onChange={this.onSearchTextChange}
+        onFocus={() => {this.setState({ showSearchItems: true })}}
+        onKeyDown={this.onInputKeyPress} />
       <ul>
         {this.state.searchList.map((searchItem, index) => (
-          <li key={index} className={this.state.selected === index ? 'selected' : null} onMouseEnter={() => { this.setState({ selected: index }) }}>
+          <li key={index} className={this.state.selected === index ? 'selected' : null} onClick={this.select} onMouseEnter={() => { this.setState({ selected: index }) }}>
             <span>{searchItem.a}</span>
-            <span> ({searchItem.d.substr(0, searchItem.substrIndex)}</span><span className='highlight'>{searchItem.d.substr(searchItem.substrIndex, this.state.searchText.length)}</span><span>{searchItem.d.substr(searchItem.substrIndex + this.state.searchText.length)})</span>
+            <span> ({searchItem.d.substr(0, searchItem.substrIndex)}</span>
+            <span className='highlight'>{searchItem.d.substr(searchItem.substrIndex, this.state.searchText.length)}</span>
+            <span>{searchItem.d.substr(searchItem.substrIndex + this.state.searchText.length)})</span>
           </li>
         ))}
+        <li>{this.state.showSearchItems ? 'shown' : 'hidden'}</li>
       </ul>
     </div>
   }
