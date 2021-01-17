@@ -123,7 +123,7 @@ class AbbreviationAutocomplete extends React.Component {
         })
 
         break
-      case 'Enter':
+      case 'Enter': // Select highlighted option
         this.select()
         e.target.blur();
 
@@ -176,8 +176,6 @@ class AbbreviationAutocomplete extends React.Component {
         showSearchItems: false
       })
 
-      //delete this.searchList[this.selected]['substrIndex']
-
       return selectedData
     }
   }
@@ -192,16 +190,15 @@ class AbbreviationAutocomplete extends React.Component {
         onChange={this.onSearchTextChange}
         onFocus={this.onInputFocus}
         onKeyDown={this.onInputKeyPress} />
-      <ul>
+      <ul style={{ display: this.state.showSearchItems ? null : "none" }}>
         {this.state.searchList.map((searchItem, index) => (
-          <li key={index} className={this.state.selected === index ? 'selected' : null} onClick={this.select} onMouseEnter={() => { this.setState({ selected: index }) }}>
+          <li key={index} className={this.state.selected === index ? 'selected' : null} onMouseDown={this.select} onMouseEnter={() => { this.setState({ selected: index }) }}>
             <span>{searchItem.a}</span>
             <span> ({searchItem.d.substr(0, searchItem.substrIndex)}</span>
             <span className='highlight'>{searchItem.d.substr(searchItem.substrIndex, this.state.searchText.length)}</span>
             <span>{searchItem.d.substr(searchItem.substrIndex + this.state.searchText.length)})</span>
           </li>
         ))}
-        <li>{this.state.showSearchItems && this.state.searchList.length ? 'shown' : 'hidden'}</li>
       </ul>
     </div>
   }

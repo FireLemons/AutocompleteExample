@@ -131,6 +131,7 @@ class AbbreviationAutocomplete extends React.Component {
         break;
 
       case 'Enter':
+        // Select highlighted option
         this.select();
         e.target.blur();
         break;
@@ -176,8 +177,7 @@ class AbbreviationAutocomplete extends React.Component {
         searchText: state.searchList[state.selected].a,
         selected: -1,
         showSearchItems: false
-      }); //delete this.searchList[this.selected]['substrIndex']
-
+      });
       return selectedData;
     }
   }
@@ -197,10 +197,14 @@ class AbbreviationAutocomplete extends React.Component {
       onChange: this.onSearchTextChange,
       onFocus: this.onInputFocus,
       onKeyDown: this.onInputKeyPress
-    }), /*#__PURE__*/React.createElement("ul", null, this.state.searchList.map((searchItem, index) => /*#__PURE__*/React.createElement("li", {
+    }), /*#__PURE__*/React.createElement("ul", {
+      style: {
+        display: this.state.showSearchItems ? null : "none"
+      }
+    }, this.state.searchList.map((searchItem, index) => /*#__PURE__*/React.createElement("li", {
       key: index,
       className: this.state.selected === index ? 'selected' : null,
-      onClick: this.select,
+      onMouseDown: this.select,
       onMouseEnter: () => {
         this.setState({
           selected: index
@@ -208,7 +212,7 @@ class AbbreviationAutocomplete extends React.Component {
       }
     }, /*#__PURE__*/React.createElement("span", null, searchItem.a), /*#__PURE__*/React.createElement("span", null, " (", searchItem.d.substr(0, searchItem.substrIndex)), /*#__PURE__*/React.createElement("span", {
       className: "highlight"
-    }, searchItem.d.substr(searchItem.substrIndex, this.state.searchText.length)), /*#__PURE__*/React.createElement("span", null, searchItem.d.substr(searchItem.substrIndex + this.state.searchText.length), ")"))), /*#__PURE__*/React.createElement("li", null, this.state.showSearchItems && this.state.searchList.length ? 'shown' : 'hidden')));
+    }, searchItem.d.substr(searchItem.substrIndex, this.state.searchText.length)), /*#__PURE__*/React.createElement("span", null, searchItem.d.substr(searchItem.substrIndex + this.state.searchText.length), ")")))));
   }
 
 }
