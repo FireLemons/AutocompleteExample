@@ -1,5 +1,5 @@
-const domContainer = document.getElementById('app');
-var exampleContents = /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, "Example With Airport IATA Codes"), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("a", {
+const container = document.getElementById('app');
+var exampleContents = /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, "Example With Airport IATA Codes"), /*#__PURE__*/React.createElement("p", null, "Open the console to view prop function calls"), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("a", {
   href: "index.jsx"
 }, "Example JSX")), /*#__PURE__*/React.createElement(AbbreviationAutocomplete, {
   data: airportData,
@@ -7,4 +7,4 @@ var exampleContents = /*#__PURE__*/React.createElement("div", null, /*#__PURE__*
   minSearchTextLength: 2,
   placeholder: "Airport Code"
 }));
-ReactDOM.render(exampleContents, domContainer);
+ReactDOM.render(exampleContents, container);
