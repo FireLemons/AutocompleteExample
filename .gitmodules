@@ -1,3 +1,6 @@
 [submodule "Abbreviation-Autocomplete"]
 	path = abbreviationAutocomplete
 	url = https://github.com/FireLemons/Abbreviation-Autocomplete.git
+[submodule "react/AbbreviationAutocompleteReact"]
+	path = react/AbbreviationAutocompleteReact
+	url = https://github.com/FireLemons/AbbreviationAutocompleteReact
