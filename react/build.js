@@ -18,5 +18,5 @@ function buildJs(scriptName) {
   });
 }
 
-buildJs('abbreviation-autocomplete')
+buildJs('AbbreviationAutocompleteReact/abbreviation-autocomplete')
 buildJs('index')
