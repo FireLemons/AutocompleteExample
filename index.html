@@ -19,7 +19,7 @@
       </noscript>
       <abbreviation-autocomplete :data="abbreviations" :limit="10" :min-search-text-length="2" placeholder="Country Code" ref="autocomplete" @update:search-text="onSearchTextChanged($event)" @select="console.log('selected: ' + JSON.stringify($event))"></abbreviation-autocomplete>
       <!-- :data="abbreviations" -->
-      <!-- The autocomplete data contained in the main Vue instance's abbreviations -->
+      <!-- The autocomplete suggestion data -->
 
       <!-- :limit="10" -->
       <!-- Limit the autocomplete results to a maximum of 10 -->
