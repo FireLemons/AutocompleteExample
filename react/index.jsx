@@ -12,7 +12,8 @@ var exampleContents =
     <p>Open the console to view prop function calls</p>
     <AbbreviationAutocomplete data={airportData} limit={15} minSearchTextLength={2} placeholder="Airport Code" onSelect={exampleOnSelect} onSearchTextChange={exampleOnSearchTextChange} />
     {/* data={airportData} */}
-    {/* The autocomplete suggestion data */}
+    {/* Set autocomplete suggestion data */}
+    {/* Required */}
 
     {/* limit={15} */}
     {/* Limit the autocomplete dropdown items to a maximum of 15 */}
