@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import AbbreviationAutocomplete from './AbbreviationAutocompleteReact/abbreviation-autocomplete'; 
 
 function exampleOnSelect(selected) {
   console.log(selected)
@@ -36,7 +37,7 @@ var exampleContents =
 
     {/* The HTML below is not relevant to the example */}
     <div id="jsx-display">
-      <h2>Contents of index.jsx</h2>
+      <h2>Example component usage in index.jsx</h2>
       <pre>
         <code>
         </code>
