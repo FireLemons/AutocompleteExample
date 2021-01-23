@@ -34,15 +34,6 @@ var exampleContents =
     {/* onSearchTextChange={exampleOnSearchTextChange} */}
     {/* Call exampleOnSearchTextChange when the search text is changed */}
     {/* Is not called after the search text is changed by a dropdown item select */}
-
-    {/* The HTML below is not relevant to the example */}
-    <div id="jsx-display">
-      <h2>Example component usage in index.jsx</h2>
-      <pre>
-        <code>
-        </code>
-      </pre>
-    </div>
   </div>
 
 ReactDOM.render(exampleContents, document.getElementById('app'));
