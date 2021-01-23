@@ -13,9 +13,6 @@ module.exports = {
       }
     ]
   },
-  optimization: {
-    minimize: false
-  },
   output: {
     path: path.resolve(__dirname),
     filename: 'index.js',

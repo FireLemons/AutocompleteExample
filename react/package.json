@@ -4,7 +4,7 @@
   "description": "An autocomplete for search terms with limited characters",
   "main": "build.js",
   "scripts": {
-    "packjs": "webpack --mode development"
+    "packjs": "webpack --mode production"
   },
   "keywords": [
     "react",
