@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import AbbreviationAutocomplete from './AbbreviationAutocompleteReact/abbreviation-autocomplete.jsx';
 
 function exampleOnSelect(selected) {
-  console.log(selected)
+  console.log('selected ' + JSON.stringify(selected))
 }
 
 function exampleOnSearchTextChange (newText) {
-  console.log(newText)
+  console.log('search text changed to ' + newText)
 }
 
 var exampleContents =
