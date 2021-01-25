@@ -1,5 +1,5 @@
 [submodule "Abbreviation-Autocomplete"]
-	path = abbreviationAutocomplete
+	path = vue/abbreviationAutocomplete
 	url = https://github.com/FireLemons/Abbreviation-Autocomplete.git
 [submodule "react/AbbreviationAutocompleteReact"]
 	path = react/AbbreviationAutocompleteReact
