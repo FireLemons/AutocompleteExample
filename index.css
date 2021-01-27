@@ -1,0 +1,56 @@
+* {
+  text-align: center
+}
+
+html, body, #wrapper {
+  height: 100%
+}
+
+body {
+  background-color: #333;
+  margin: 0;
+  overflow: hidden
+}
+
+h1 {
+  color: #eee;
+  height: 32px;
+  margin: 0
+}
+
+#links {
+  display: flex;
+  flex-direction: row;
+  height: calc(100% - 32px)
+}
+
+#links>a {
+  color: #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all .5s ease-in-out
+}
+
+#links>a:hover {
+  transform: scale(1.03)
+}
+
+#links>a:first-child {
+  padding: 1em 0 1em 1em
+}
+
+#links>a:last-child {
+  padding: 1em 1em 1em 0
+}
+
+#links>a>img {
+  width: 60%
+}
+
+#links>a>span {
+  padding: 1em 0;
+  font-size: 18pt
+}
