@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AbbreviationAutocomplete from './AbbreviationAutocompleteReact/abbreviation-autocomplete.jsx';
+import AbbreviationAutocomplete from 'abbreviation-autocomplete-react';
 
 function exampleOnSelect(selected) {
   console.log('selected ' + JSON.stringify(selected))
